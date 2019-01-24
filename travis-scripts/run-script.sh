@@ -70,6 +70,7 @@ function run()
 
     # export cocos console root
     export COCOS_CONSOLE_ROOT=$COCOS2DX_ROOT/tools/cocos2d-console/bin
+    echo "export COCOS_CONSOLE_ROOT=${COCOS_CONSOLE_ROOT}"
     source ~/.bash_profile
 
     # disagreeing 
