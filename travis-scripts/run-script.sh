@@ -70,13 +70,13 @@ function run()
 
     # export cocos console root
     export COCOS_CONSOLE_ROOT=$COCOS2DX_ROOT/tools/cocos2d-console/bin
-    echo "export COCOS_CONSOLE_ROOT=${COCOS_CONSOLE_ROOT}"
-    source ~/.bash_profile
+    echo "export COCOS_CONSOLE_ROOT=${COCOS_CONSOLE_ROOT}" > environment.sh
+    source environment.sh
 
     # disagreeing 
     echo "command : ${COCOS_CONSOLE_ROOT}/cocos --agreement n"
     ${COCOS_CONSOLE_ROOT}/cocos --agreement n
-
+    
     # need to generate binding codes for all targets
     genernate_binding_codes
 
