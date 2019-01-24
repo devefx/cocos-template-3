@@ -30,7 +30,7 @@ function do_retry()
 function build_android_cmake()
 {
     # Build all samples
-    echo "Building Android samples ..."
+    echo "Building Android ..."
     source frameworks/environment.sh
 
     # build project
