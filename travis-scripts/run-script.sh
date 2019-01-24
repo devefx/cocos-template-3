@@ -74,7 +74,8 @@ function run()
     source ~/.bash_profile
 
     # disagreeing 
-    $COCOS_CONSOLE_ROOT/cocos --agreement n
+    echo "command : ${COCOS_CONSOLE_ROOT}/cocos --agreement n"
+    ${COCOS_CONSOLE_ROOT}/cocos --agreement n
 
     # need to generate binding codes for all targets
     genernate_binding_codes
