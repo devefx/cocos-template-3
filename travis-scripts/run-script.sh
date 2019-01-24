@@ -68,6 +68,13 @@ function run()
 {
     echo "Building ..."
 
+    # export cocos console root
+    export COCOS_CONSOLE_ROOT=$COCOS2DX_ROOT/tools/cocos2d-console/bin
+    source ~/.bash_profile
+
+    # disagreeing 
+    $COCOS_CONSOLE_ROOT/cocos --agreement n
+
     # need to generate binding codes for all targets
     genernate_binding_codes
 
