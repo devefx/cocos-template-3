@@ -1,0 +1,16 @@
+matrix:
+  include:
+    - os: linux
+      env:
+        - BUILD_TARGET=android_cmake
+      language: android
+      sudo: true
+
+before_install:
+  - travis-scripts/before-install.sh
+
+script:
+  - travis-scripts/run-script.sh
+
+cache: 
+  bundler: true
