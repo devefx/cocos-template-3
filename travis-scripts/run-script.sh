@@ -74,8 +74,7 @@ function run()
     source environment.sh
 
     # disagreeing 
-    echo "command : ${COCOS_CONSOLE_ROOT}/cocos --agreement n"
-    ${COCOS_CONSOLE_ROOT}/cocos --agreement n
+    ${COCOS_CONSOLE_ROOT}/cocos -v --agreement n
     
     # need to generate binding codes for all targets
     genernate_binding_codes
