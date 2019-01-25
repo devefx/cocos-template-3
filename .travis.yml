@@ -4,7 +4,13 @@ matrix:
       env:
         - BUILD_TARGET=android_cmake
       language: android
-      sudo: true
+      sudo: required
+    - os: linux
+      env: 
+        - BUILD_TARGET=linux 
+      language: cpp
+      sudo: required
+      
 
 before_install:
   - travis-scripts/before-install.sh

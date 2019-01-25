@@ -6,6 +6,7 @@ set -e
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PROJECT_ROOT="$DIR"/..
 COCOS2DX_ROOT="$PROJECT_ROOT"/frameworks/cocos2d-x
+CPU_CORES=4
 
 function do_retry()
 {
@@ -25,6 +26,18 @@ function do_retry()
             return 1
         fi
     done
+}
+
+function build_linux()
+{
+    CPU_CORES=`grep -c ^processor /proc/cpuinfo`
+    echo "Building Linux ..."
+    cd $PROJECT_ROOT
+    mkdir -p linux-build
+    cd linux-build
+    cmake ..
+    echo "cpu cores: ${CPU_CORES}"
+    make -j${CPU_CORES} VERBOSE=1
 }
 
 function build_android_cmake()
@@ -78,6 +91,11 @@ function run()
     
     # need to generate binding codes for all targets
     genernate_binding_codes
+
+    # linux
+    if [ $BUILD_TARGET == 'linux' ]; then
+        build_linux
+    fi
 
     # android
     if [ $BUILD_TARGET == 'android_cmake' ]; then
