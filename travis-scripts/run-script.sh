@@ -40,6 +40,21 @@ function build_linux()
     make -j${CPU_CORES} VERBOSE=1
 }
 
+function build_mac_cmake()
+{
+    NUM_OF_CORES=`getconf _NPROCESSORS_ONLN`
+    echo "Building Mac ..."
+    cd $PROJECT_ROOT
+    mkdir -p mac_cmake_build
+    cd mac_cmake_build
+    cmake .. -GXcode
+    # cmake --build .
+    xcodebuild -project cocos-template-3.xcodeproj -alltargets -jobs $NUM_OF_CORES build  | xcpretty
+    #the following commands must not be removed
+    xcodebuild -project cocos-template-3.xcodeproj -alltargets -jobs $NUM_OF_CORES build
+    exit 0
+}
+
 function build_android_cmake()
 {
     # Build all samples
