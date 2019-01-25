@@ -55,6 +55,22 @@ function build_mac_cmake()
     exit 0
 }
 
+function build_ios_cmake()
+{
+    NUM_OF_CORES=`getconf _NPROCESSORS_ONLN`
+    echo "Building Ios ..."
+    cd $PROJECT_ROOT
+    mkdir -p ios_cmake_build
+    cd ios_cmake_build
+    cmake .. -DCMAKE_TOOLCHAIN_FILE=$COCOS2DX_ROOT/cmake/ios.toolchain.cmake -GXcode -DIOS_PLATFORM=SIMULATOR64
+    # too much logs on console when "cmake --build ."
+    # cmake --build .
+    xcodebuild -project cocos-template-3.xcodeproj -alltargets -jobs $NUM_OF_CORES  -destination "platform=iOS Simulator,name=iPhone Retina (4-inch)" build  | xcpretty
+    #the following commands must not be removed
+    xcodebuild -project cocos-template-3.xcodeproj -alltargets -jobs $NUM_OF_CORES  -destination "platform=iOS Simulator,name=iPhone Retina (4-inch)" build
+    exit 0
+}
+
 function build_android_cmake()
 {
     # Build all samples
@@ -110,6 +126,16 @@ function run()
     # linux
     if [ $BUILD_TARGET == 'linux' ]; then
         build_linux
+    fi
+
+    # mac
+    if [ $BUILD_TARGET == 'mac_cmake' ]; then
+        build_mac_cmake
+    fi
+
+    # ios
+    if [ $BUILD_TARGET == 'ios_cmake' ]; then
+        build_ios_cmake
     fi
 
     # android

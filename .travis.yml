@@ -1,10 +1,10 @@
 matrix:
   include:
-    #- os: linux
-    #  env: 
-    #    - BUILD_TARGET=linux 
-    #  language: cpp
-    #  sudo: required
+    - os: linux
+      env: 
+        - BUILD_TARGET=linux 
+      language: cpp
+      sudo: required
     - os: linux
       env:
         - BUILD_TARGET=android_cmake
@@ -23,7 +23,6 @@ matrix:
       osx_image: xcode9.3
       sudo: required
       
-
 before_install:
   - travis-scripts/before-install.sh
 
