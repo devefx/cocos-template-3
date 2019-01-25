@@ -27,6 +27,8 @@ function install_linux_environment()
     echo -e "y" | bash $COCOS2DX_ROOT/build/install-deps-linux.sh
     echo "Installing linux dependence packages finished!"
     
+    sudo apt-cache search binutils
+    sudo apt-get install --force-yes --yes binutils-2.26 > /dev/null
     ld --version
 }
 
@@ -82,14 +84,3 @@ function install_environement()
 install_environement
 
 echo "before-install.sh execution finished!"
-
-
-
-
-
-
-
-
-
-
-
