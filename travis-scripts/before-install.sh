@@ -28,7 +28,7 @@ function install_linux_environment()
     echo "Installing linux dependence packages finished!"
     
     sudo apt-cache search binutils
-    sudo apt-get install --force-yes --yes binutils-2.26 > /dev/null
+    sudo apt-get install --force-yes --yes binutils-2.28 > /dev/null
     ld --version
 }
 
