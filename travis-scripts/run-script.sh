@@ -73,7 +73,6 @@ function build_ios_cmake()
 
 function build_android_cmake()
 {
-    # Build all samples
     echo "Building Android ..."
     source frameworks/environment.sh
 
@@ -81,6 +80,17 @@ function build_android_cmake()
     pushd $PROJECT_ROOT/frameworks/runtime-src/proj.android
     do_retry ./gradlew assembleRelease -PPROP_BUILD_TYPE=cmake --parallel --info
     popd
+}
+
+function build_windows32_cmake()
+{
+    echo "Building Windows ..."
+    cd $PROJECT_ROOT
+    mkdir -p win32-build
+    cd win32-build
+    cmake .. -DCMAKE_BUILD_TYPE=Release
+    ls -l
+    exit 0
 }
 
 function genernate_binding_codes()
@@ -141,6 +151,11 @@ function run()
     # android
     if [ $BUILD_TARGET == 'android_cmake' ]; then
         build_android_cmake
+    fi
+
+    # windows
+    if [ $BUILD_TARGET == 'windows32_cmake' ]; then
+        build_windows32_cmake
     fi
 }
 

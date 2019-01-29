@@ -22,6 +22,11 @@ matrix:
       language: cpp
       osx_image: xcode9.3
       sudo: required
+    - os: windows
+      env:
+        - BUILD_TARGET=windows32_cmake
+      language: cpp
+      sudo: required
       
 before_install:
   - travis-scripts/before-install.sh
