@@ -83,10 +83,15 @@ function install_python_module_for_osx()
 
 function install_python_module_for_windows()
 {
+    mkdir -p $HOME/bin
+    pushd $HOME/bin
+
     PIP_DOWNLOAD_URL="https://bootstrap.pypa.io/get-pip.py"
     echo "Download ${PIP_DOWNLOAD_URL}"
     ${CURL} -0 ${PIP_DOWNLOAD_URL}
     python get-pip.py
+    popd
+    echo "Installing python modules finished!"
 }
 
 function install_latest_python()
