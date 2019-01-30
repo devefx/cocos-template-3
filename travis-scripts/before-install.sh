@@ -9,7 +9,12 @@ CURL="curl --retry 999 --retry-max-time 0"
 
 function install_android_ndk()
 {
-    sudo python -m pip install retry
+    if [ "$TRAVIS_OS_NAME" == "windows" ] ; then
+        python -m pip install retry
+    else
+        sudo python -m pip install retry
+    fi
+
     if [ "$BUILD_TARGET" == "android_ndk-build" ]\
         || [ "$BUILD_TARGET" == "android_lua_ndk-build" ]\
         || [ "$BUILD_TARGET" == "android_cmake" ]\
