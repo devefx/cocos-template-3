@@ -83,8 +83,8 @@ function install_python_module_for_osx()
 
 function install_python_module_for_windows()
 {
-    python -m ensurepip
-    easy_install -U pip
+    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+    python get-pip.py
 
     #mkdir -p $HOME/bin
     #pushd $HOME/bin
