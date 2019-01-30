@@ -84,7 +84,7 @@ function install_python_module_for_osx()
 function install_python_module_for_windows()
 {
     python -m ensurepip
-    easy_install pip
+    easy_install -U pip
 
     #mkdir -p $HOME/bin
     #pushd $HOME/bin
