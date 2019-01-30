@@ -81,6 +81,14 @@ function install_python_module_for_osx()
     sudo pip install Cheetah
 }
 
+function install_python_module_for_windows()
+{
+    PIP_DOWNLOAD_URL="https://bootstrap.pypa.io/get-pip.py"
+    echo "Download ${PIP_DOWNLOAD_URL}"
+    ${CURL} -0 ${PIP_DOWNLOAD_URL}
+    python get-pip.py
+}
+
 function install_latest_python()
 {
     python -V
@@ -107,6 +115,10 @@ function install_environement()
     if [ "$TRAVIS_OS_NAME" == "osx" ]; then
         install_latest_python
         install_python_module_for_osx
+    fi
+
+    if [ "$TRAVIS_OS_NAME" == "windows" ]; then
+        install_python_module_for_windows
     fi
 
     # use NDK's clang to generate binding codes
