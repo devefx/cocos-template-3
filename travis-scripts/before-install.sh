@@ -85,7 +85,7 @@ function install_python_module_for_osx()
 
 function install_python_module_for_windows()
 {
-    choco install python2
+    choco install python
     python --version
     echo "Installing python modules finished!"
 }
