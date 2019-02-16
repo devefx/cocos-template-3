@@ -14,6 +14,8 @@ function install_android_ndk()
     else
         sudo python -m pip install retry
     fi
+    
+    echo "Setup android..."
 
     if [ "$BUILD_TARGET" == "android_ndk-build" ]\
         || [ "$BUILD_TARGET" == "android_lua_ndk-build" ]\
