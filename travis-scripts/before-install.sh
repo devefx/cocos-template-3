@@ -85,7 +85,8 @@ function install_python_module_for_osx()
 
 function install_python_module_for_windows()
 {
-    choco install python
+    choco install python2
+    export PATH="/c/Python27:/c/Python27/Scripts:$PATH"
     python --version
     echo "Installing python modules finished!"
 }
