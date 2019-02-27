@@ -88,6 +88,7 @@ function install_python_module_for_windows()
     choco install python2
     export PATH="/c/Python27:/c/Python27/Scripts:$PATH"
     python --version
+    python -m pip install --upgrade pip
     echo "Installing python modules finished!"
 }
 
