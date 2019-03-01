@@ -24,6 +24,7 @@ function install_android_ndk()
         || [ "$BUILD_TARGET" == "android_lua_cmake" ] ; then
         python $COCOS2DX_ROOT/tools/appveyor-scripts/setup_android.py
     else
+        python -u $DIR/test.py
         python -u $COCOS2DX_ROOT/tools/appveyor-scripts/setup_android.py --ndk_only
     fi
 }
